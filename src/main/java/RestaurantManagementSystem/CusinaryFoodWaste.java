@@ -5,44 +5,58 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class CusinaryFoodWaste extends JFrame implements ActionListener{
-    private JLabel inventoryLbl;
+    private ImageIcon bgImage, homeImage;
+    private JLabel bgLbl, inventoryLbl;
     private JButton homeBtn;
     private JComboBox reportsCbox;
     private JTextArea monthAr, inventoryAr;
     
     CusinaryFoodWaste(){
         setTitle("Cusinary Food Waste");
-        setSize(900, 650);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(this);
-        setLayout(null);
+        setSize(900, 650);
         setVisible(true);
+
+        bgImage  = new ImageIcon("C:\\Users\\Nico\\Desktop\\img\\ResizedBG.jpg");
+        bgLbl = new JLabel(bgImage);
         
         inventoryLbl = new JLabel("Cusinary Food Waste");
         inventoryLbl.setBounds(390, 120, 120, 50);
+        bgLbl.add(inventoryLbl);
         
-        homeBtn = new JButton ("HOME");
-        homeBtn.setBounds(50, 90, 100, 20);
+        homeImage = new ImageIcon("C:\\Users\\Nico\\Desktop\\img\\Home.png");
+        homeBtn = new JButton (homeImage);
+        homeBtn.setBounds(50, 90, homeImage.getIconWidth(), homeImage.getIconHeight());
+        homeBtn.setContentAreaFilled(false);
+        homeBtn.setOpaque(false);
+        homeBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         homeBtn.addActionListener(this);
+        bgLbl.add(homeBtn);
         
         String[] choice = {"Inventory", "Sales", "Waste"};
         reportsCbox = new JComboBox(choice);
-        reportsCbox.setBounds(50, 120, 100, 20);
+        reportsCbox.setBounds(50, 150, 100, 20);
+        reportsCbox.setOpaque(true);
+        reportsCbox.setForeground(Color.BLACK);
+        reportsCbox.setBackground(Color.WHITE);
+        reportsCbox.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         reportsCbox.addActionListener(this);
+        reportsCbox.addActionListener(this);
+        bgLbl.add(reportsCbox);
         
         monthAr = new JTextArea ("Month");
         monthAr.setBounds(50, 180, 100, 300);
         monthAr.setEditable(false);
+        monthAr.setOpaque(false);
+        bgLbl.add(monthAr);
         
-        inventoryAr = new JTextArea ("Food Waste (tabular)");
+        inventoryAr = new JTextArea ("Inventory (tabular)");
         inventoryAr.setBounds(175, 180, 600, 300);
         inventoryAr.setEditable(false);
+        inventoryAr.setOpaque(false);
+        bgLbl.add(inventoryAr);
         
-        add(inventoryLbl);
-        add(homeBtn);
-        add(reportsCbox);
-        add(monthAr);
-        add(inventoryAr);
+        add(bgLbl);
     }
     @Override
     public void actionPerformed(ActionEvent clicked) {

@@ -1,46 +1,62 @@
 package RestaurantManagementSystem;
 
+import java.awt.*;
+import java.io.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 public class HomePage extends JFrame implements ActionListener{
-//    private ImageIcon bgIcon;
-//    private JLabel myLabel; 
-    private JLabel logoLbl;
+    private ImageIcon bgImage, logoImage;
+    private JLabel bgLbl, logoLbl;
     private JButton takeorderBtn, reportsButton;
     
     public HomePage(){
-//        bgIcon = new ImageIcon(this.getClass().getResource("C:/Users/Nico/Desktop/img/Background.jpg"));
-//        myLabel = new JLabel(bgIcon);
-//        myLabel.setSize(800, 650);
-//        add(myLabel);
-        
         setTitle("Home Page");
-        setSize(900, 650);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(this);
-        setLayout(null);
+        setSize(900, 650);
         setVisible(true);
+
+        bgImage  = new ImageIcon("C:\\Users\\Nico\\Desktop\\img\\ResizedBG.jpg");
+        bgLbl = new JLabel(bgImage);
         
-        logoLbl = new JLabel("Logo");
-        logoLbl.setBounds(420, 120, 100, 50);
+        logoImage = new ImageIcon("C:\\Users\\Nico\\Desktop\\img\\Logo100x100.png");
+        logoLbl = new JLabel(logoImage);
+        logoLbl.setBounds(387, 150, logoImage.getIconWidth(), logoImage.getIconHeight());
+        bgLbl.add(logoLbl);
         
-        takeorderBtn = new JButton ("TAKE ORDERS");
-        takeorderBtn.setBounds(370, 180, 130, 20);
+        takeorderBtn = new JButton("TAKE ORDERS");
+        takeorderBtn.setBounds(370, 270, 130, 20);
+        takeorderBtn.setContentAreaFilled(false);
+        takeorderBtn.setFocusPainted(false);
+        takeorderBtn.setOpaque(true);
+        takeorderBtn.setForeground(Color.BLACK);
+        takeorderBtn.setBackground(Color.WHITE);
+        takeorderBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         takeorderBtn.addActionListener(this);
+        bgLbl.add(takeorderBtn);
         
         reportsButton = new JButton ("REPORTS");
-        reportsButton.setBounds(370, 210, 130, 20);
+        reportsButton.setBounds(370, 300, 130, 20);
+        reportsButton.setContentAreaFilled(false);
+        reportsButton.setFocusPainted(false);
+        reportsButton.setOpaque(true);
+        reportsButton.setForeground(Color.BLACK);
+        reportsButton.setBackground(Color.WHITE);
+        reportsButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         reportsButton.addActionListener(this);
+        bgLbl.add(reportsButton);
         
-        add(logoLbl);
-        add(takeorderBtn);
-        add(reportsButton);
+        add(bgLbl);
     }
     
     @Override
     public void actionPerformed(ActionEvent clicked){
-        if(clicked.getSource() == reportsButton){
+        if(clicked.getSource() == takeorderBtn){
+            dispose();
+            new MainCourse();
+        }
+        else if(clicked.getSource() == reportsButton){
             dispose();
             new CusinaryReports();
         }

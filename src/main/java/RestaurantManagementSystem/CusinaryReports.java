@@ -5,42 +5,66 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class CusinaryReports extends JFrame implements ActionListener{
-    private JLabel reportsLbl;
+    private ImageIcon bgImage, homeImage;
+    private JLabel bgLbl, reportsLbl;
     private JButton homeBtn, inventoryBtn, salesBtn, wasteBtn;
     
     CusinaryReports(){
         setTitle("Cusinary Reports");
-        setSize(900, 650);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(this);
-        setLayout(null);
+        setSize(900, 650);
         setVisible(true);
+
+        bgImage  = new ImageIcon("C:\\Users\\Nico\\Desktop\\img\\ResizedBG.jpg");
+        bgLbl = new JLabel(bgImage);
         
         reportsLbl = new JLabel("Cusinary Reports");
         reportsLbl.setBounds(390, 120, 100, 50);
+        bgLbl.add(reportsLbl);
         
-        homeBtn = new JButton ("HOME");
-        homeBtn.setBounds(50, 90, 100, 20);
+        homeImage = new ImageIcon("C:\\Users\\Nico\\Desktop\\img\\Home.png");
+        homeBtn = new JButton (homeImage);
+        homeBtn.setBounds(50, 90, homeImage.getIconWidth(), homeImage.getIconHeight());
+        homeBtn.setContentAreaFilled(false);
+        homeBtn.setOpaque(false);
+        homeBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         homeBtn.addActionListener(this);
+        bgLbl.add(homeBtn);
         
         inventoryBtn = new JButton ("INVENTORY");
         inventoryBtn.setBounds(370, 180, 130, 20);
+        inventoryBtn.setContentAreaFilled(false);
+        inventoryBtn.setFocusPainted(false);
+        inventoryBtn.setOpaque(true);
+        inventoryBtn.setForeground(Color.BLACK);
+        inventoryBtn.setBackground(Color.WHITE);
+        inventoryBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         inventoryBtn.addActionListener(this);
+        bgLbl.add(inventoryBtn);
         
         salesBtn = new JButton ("SALES");
         salesBtn.setBounds(370, 210, 130, 20);
+        salesBtn.setContentAreaFilled(false);
+        salesBtn.setFocusPainted(false);
+        salesBtn.setOpaque(true);
+        salesBtn.setForeground(Color.BLACK);
+        salesBtn.setBackground(Color.WHITE);
+        salesBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         salesBtn.addActionListener(this);
+        bgLbl.add(salesBtn);
         
         wasteBtn = new JButton ("FOOD WASTE");
         wasteBtn.setBounds(370, 240, 130, 20);
+        wasteBtn.setContentAreaFilled(false);
+        wasteBtn.setFocusPainted(false);
+        wasteBtn.setOpaque(true);
+        wasteBtn.setForeground(Color.BLACK);
+        wasteBtn.setBackground(Color.WHITE);
+        wasteBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         wasteBtn.addActionListener(this);
+        bgLbl.add(wasteBtn);
         
-        add(reportsLbl);
-        add(homeBtn);
-        add(inventoryBtn);
-        add(salesBtn);
-        add(wasteBtn);
-        
+        add(bgLbl);
     }
     @Override
     public void actionPerformed(ActionEvent clicked) {
