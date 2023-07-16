@@ -75,7 +75,8 @@ public class CusinaryInventory extends JFrame implements ActionListener{
                     new CusinarySales();
                     break;
                 case "Waste":
-                    new CusinaryFoodWaste();
+                    CuisinaryFoodWaste foodwaste = new CuisinaryFoodWaste();
+                    foodwaste.setVisible(true);
                     break;
                 default:
                     break;

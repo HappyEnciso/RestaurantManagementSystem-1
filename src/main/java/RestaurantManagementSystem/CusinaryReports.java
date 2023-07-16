@@ -82,7 +82,8 @@ public class CusinaryReports extends JFrame implements ActionListener{
         }
         else if(clicked.getSource() == wasteBtn){
             dispose();
-            new CusinaryFoodWaste();
+            CuisinaryFoodWaste foodwaste = new CuisinaryFoodWaste();
+            foodwaste.setVisible(true);
         }
     }
 }
